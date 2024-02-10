@@ -236,6 +236,7 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    slot_machine (0.1.2)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -290,6 +291,7 @@ DEPENDENCIES
   sassc-rails
   selenium-webdriver
   simple_form!
+  slot_machine
   sprockets-rails
   stimulus-rails
   turbo-rails
