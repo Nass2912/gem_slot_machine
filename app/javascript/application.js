@@ -3,11 +3,3 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "@popperjs/core"
 import "bootstrap"
-
-document.addEventListener('DOMContentLoaded', function () {
-  var calendarEl = document.getElementById('calendar');
-  var calendar = new FullCalendar.Calendar(calendarEl, {
-    initialView: 'dayGridMonth'
-  });
-  calendar.render();
-});
