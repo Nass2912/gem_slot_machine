@@ -7,26 +7,11 @@ export default class extends Controller {
     console.log(this.calendarTarget)
     var calendarEl = this.calendarTarget;
     const calOptIns = {
-      events: [
-        {
-          title: 'Meeting',
-          start: '2024-02-12T14:00:00',
-          extendedProps: {
-            status: 'done'
-          }
-        },
-        {
-          title: 'Birthday Party',
-          start: '2024-02-12T15:00:00',
-          backgroundColor: 'green',
-          borderColor: 'green'
-        }
-      ],
       select: function (selectionInfo) {
         calendar.addEvent({
           title: 'dynamic event',
           start: selectionInfo.start,
-          end: selectionInfo.end //need these and not endTime/startTime, otherwise they won't re-render
+          end: selectionInfo.end
         });
         calendar.unselect();
       },
@@ -38,16 +23,32 @@ export default class extends Controller {
       selectable: true,
       slotDuration: '01:00',
       headerToolbar: {
-      left: 'prev,next',
-      center: 'title',
+      left: 'title',
+      center: 'prev,next',
         right: 'timeGridWeek,timeGridDay'
       }
     };
+    calOptIns.events = [
+      {
+        title: 'Meeting',
+        start: '2024-02-12T14:00:00',
+        extendedProps: {
+          status: 'done'
+        }
+      },
+      {
+        title: 'Birthday Party',
+        start: '2024-02-12T15:00:00',
+        backgroundColor: 'green',
+        borderColor: 'green'
+      }
+    ]
     var calendar = new FullCalendar.Calendar(calendarEl, calOptIns);
     calendar.render();
+    getEvents();
     function getEvents() {
       console.log(calendar.getEvents());
+
     }
-    getEvents();
   }
 }
