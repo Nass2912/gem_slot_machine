@@ -45,5 +45,9 @@ export default class extends Controller {
     };
     var calendar = new FullCalendar.Calendar(calendarEl, calOptIns);
     calendar.render();
+    function getEvents() {
+      console.log(calendar.getEvents());
+    }
+    getEvents();
   }
 }
