@@ -7,11 +7,28 @@ export default class extends Controller {
     console.log(this.calendarTarget)
     var calendarEl = this.calendarTarget;
     const calOptIns = {
-      initialView: 'resourceTimelineWeek',
+      events: [
+        {
+          title: 'Meeting',
+          start: '2024-02-12T14:00:00',
+          extendedProps: {
+            status: 'done'
+          }
+        },
+        {
+          title: 'Birthday Party',
+          start: '2024-02-12T15:00:00',
+          backgroundColor: 'green',
+          borderColor: 'green'
+        }
+      ],
+      initialView: 'timeGridWeek',
+      selectable: true,
+      slotDuration: '01:00',
       headerToolbar: {
       left: 'prev,next',
       center: 'title',
-      right: 'dayGridWeek,dayGridDay'
+        right: 'timeGridWeek,timeGridDay'
       }
     };
     var calendar = new FullCalendar.Calendar(calendarEl, calOptIns);
