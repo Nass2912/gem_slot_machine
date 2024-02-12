@@ -22,7 +22,19 @@ export default class extends Controller {
           borderColor: 'green'
         }
       ],
+      select: function (selectionInfo) {
+        calendar.addEvent({
+          title: 'dynamic event',
+          start: selectionInfo.start,
+          end: selectionInfo.end //need these and not endTime/startTime, otherwise they won't re-render
+        });
+        calendar.unselect();
+      },
+      eventClick: function (eventClickInfo) {
+        eventClickInfo.event.remove();
+      },
       initialView: 'timeGridWeek',
+      editable: true,
       selectable: true,
       slotDuration: '01:00',
       headerToolbar: {
