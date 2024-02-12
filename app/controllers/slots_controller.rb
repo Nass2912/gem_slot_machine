@@ -8,10 +8,12 @@ class SlotsController < ApplicationController
 
   # GET /slots/1 or /slots/1.json
   def show
+    @doctor = Doctor.find(params[:id])
   end
 
   # GET /slots/new
   def new
+    @doctor = Doctor.find(params[:doctor_id])
     @slot = Slot.new
   end
 

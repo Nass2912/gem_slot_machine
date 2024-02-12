@@ -1,7 +1,8 @@
 source "https://rubygems.org"
 
 ruby "3.1.2"
-gem "slot_machine"
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3"
