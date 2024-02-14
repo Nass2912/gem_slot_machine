@@ -6,7 +6,7 @@
   <% @slots.each do |slot| %>
     <%= render slot %>
     <p>
-      <%= link_to "Show this slot", slot %>
+      <%= link_to "Show this slot", doctor_slot_path(@doctor) %>
     </p>
   <% end %>
 </div>

@@ -4,6 +4,23 @@ export default class extends Controller {
   static targets = ["calendar"]
 
   connect() {
+    const fetcher = () =>{
+      fetch('/doctors/1/slots', {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Data:', data);
+          // Handle the data as needed
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          // Handle errors
+        });
+    }
+    fetcher();
     console.log(this.calendarTarget)
     var calendarEl = this.calendarTarget;
     const calOptIns = {
@@ -45,10 +62,5 @@ export default class extends Controller {
     ]
     var calendar = new FullCalendar.Calendar(calendarEl, calOptIns);
     calendar.render();
-    getEvents();
-    function getEvents() {
-      console.log(calendar.getEvents());
-
-    }
   }
 }
