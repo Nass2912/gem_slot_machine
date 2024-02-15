@@ -14,19 +14,19 @@ export default class extends Controller {
         const outputDate = new Date("2024-02-15T14:00:00");
 
         // Set the hours, minutes, seconds, and milliseconds of the input date to match the output date
-        inputDate.setHours(outputDate.getHours(), outputDate.getMinutes(), outputDate.getSeconds(), outputDate.getMilliseconds());
+        inputDate.setHours(outputDate.getHours(), outputDate.getMinutes(), outputDate.getSeconds());
 
         // Format the result as a string in the desired format
-        const resultDateString = inputDate.toISOString();
+        const resultDateString = inputDate.toISOString().replace('Z', '').replace('.000','');
 
-        console.log(resultDateString);
-        calOptIns.events.push({
+        console.log("resultDateString",resultDateString);
+        calOptIns.events = [{
           title: "booked",
           start: resultDateString
-        })
+        }]
       });
+      console.log("calOptIns", calOptIns.events)
     }
-    console.log(this.calendarTarget)
     var calendarEl = this.calendarTarget;
     const calOptIns = {
       select: function (selectionInfo) {
@@ -50,23 +50,25 @@ export default class extends Controller {
         right: 'timeGridWeek,timeGridDay'
       }
     };
-    calOptIns.events = [
+    fetcher();
+    calOptIns.events.push(
       {
         title: 'Meeting',
         start: '2024-02-15T14:00:00',
         extendedProps: {
           status: 'done'
         }
-      },
+      }
+    )
+    calOptIns.events.push(
       {
         title: 'Birthday Party',
-        start: '2024-02-15T15:00:00',
+        start: '2024-02-12T15:00:00',
         backgroundColor: 'green',
         borderColor: 'green'
       }
-    ]
+    )
     var calendar = new FullCalendar.Calendar(calendarEl, calOptIns);
     calendar.render();
-    fetcher();
   }
 }
