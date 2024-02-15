@@ -64,6 +64,7 @@ export default class extends Controller {
       {
         title: 'Birthday Party',
         start: '2024-02-12T15:00:00',
+        end: '2024-02-12T18:00:00',
         backgroundColor: 'green',
         borderColor: 'green'
       }
